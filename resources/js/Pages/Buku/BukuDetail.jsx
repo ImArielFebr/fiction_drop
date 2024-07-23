@@ -1,5 +1,5 @@
-import { PaperClipIcon } from '@heroicons/react/20/solid'
-import { useForm } from '@inertiajs/react'
+import { PaperClipIcon } from "@heroicons/react/20/solid";
+import { useForm } from "@inertiajs/react";
 
 export default function BukuDetail({ buku }) {
     const { data, setData, post, errors, processing, progress } = useForm({
@@ -22,71 +22,121 @@ export default function BukuDetail({ buku }) {
     });
 
     return (
-        <div className="relative isolate overflow-hidden col-span-full p-8 bg-purple-50 mt-6 border-t border-gray-100">
+        <div className="container col-span-full border-t border-gray-100 bg-transparent p-8">
             <div className="">
                 <input
-                className="block w-full mb-4 font-bold bg-transparent rounded-md border-0 text-7xl text-center text-gray-800"
-                value={buku.judul}
-                onChange={(e) => setData('berat', e.target.value)}
+                    className="mb-4 block w-full rounded-md border-0 bg-transparent text-center text-7xl font-bold text-gray-800"
+                    value={buku.judul}
+                    onChange={(e) => setData("berat", e.target.value)}
                 />
             </div>
             <div className="block w-full object-center px-4 sm:px-0">
-                <img className='object-center h-60' src={window.location.origin + `/upload/${buku.sampul}`} alt='Sampul Buku' />
+                <img
+                    className="h-60 object-center"
+                    src={window.location.origin + `/upload/${buku.sampul}`}
+                    alt="Sampul Buku"
+                />
             </div>
-            <div className="mt-6 border-t border-gray-100">
-                <dl className="divide-y divide-gray-100">
+            <div className="mt-6 border-t border-gray-800">
+                <dl className="divide-y divide-gray-700">
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Application for</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">About</dt>
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Full name
+                        </dt>
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-                            qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
-                            pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+                            Margot Foster
                         </dd>
                     </div>
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Application for
+                        </dt>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            Backend Developer
+                        </dd>
+                    </div>
+                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Email address
+                        </dt>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            margotfoster@example.com
+                        </dd>
+                    </div>
+                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Salary expectation
+                        </dt>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            $120,000
+                        </dd>
+                    </div>
+                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            About
+                        </dt>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            Fugiat ipsum ipsum deserunt culpa aute sint do
+                            nostrud anim incididunt cillum culpa consequat.
+                            Excepteur qui ipsum aliquip consequat sint. Sit id
+                            mollit nulla mollit nostrud in ea officia proident.
+                            Irure nostrud pariatur mollit ad adipisicing
+                            reprehenderit deserunt qui eu.
+                        </dd>
+                    </div>
+                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Attachments
+                        </dt>
                         <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                            <ul role="list" className="divide-y divide-gray-100 rounded-md border border-gray-200">
+                            <ul
+                                role="list"
+                                className="divide-y divide-gray-100 rounded-md border border-gray-200"
+                            >
                                 <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                                     <div className="flex w-0 flex-1 items-center">
-                                        <PaperClipIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                                        <PaperClipIcon
+                                            aria-hidden="true"
+                                            className="h-5 w-5 flex-shrink-0 text-gray-400"
+                                        />
                                         <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                                            <span className="truncate font-medium">resume_back_end_developer.pdf</span>
-                                            <span className="flex-shrink-0 text-gray-400">2.4mb</span>
+                                            <span className="truncate font-medium">
+                                                resume_back_end_developer.pdf
+                                            </span>
+                                            <span className="flex-shrink-0 text-gray-400">
+                                                2.4mb
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="ml-4 flex-shrink-0">
-                                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                        <a
+                                            href="#"
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        >
                                             Download
                                         </a>
                                     </div>
                                 </li>
                                 <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                                     <div className="flex w-0 flex-1 items-center">
-                                        <PaperClipIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0 text-gray-400" />
+                                        <PaperClipIcon
+                                            aria-hidden="true"
+                                            className="h-5 w-5 flex-shrink-0 text-gray-400"
+                                        />
                                         <div className="ml-4 flex min-w-0 flex-1 gap-2">
-                                            <span className="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                                            <span className="flex-shrink-0 text-gray-400">4.5mb</span>
+                                            <span className="truncate font-medium">
+                                                coverletter_back_end_developer.pdf
+                                            </span>
+                                            <span className="flex-shrink-0 text-gray-400">
+                                                4.5mb
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="ml-4 flex-shrink-0">
-                                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                        <a
+                                            href="#"
+                                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        >
                                             Download
                                         </a>
                                     </div>
@@ -97,5 +147,5 @@ export default function BukuDetail({ buku }) {
                 </dl>
             </div>
         </div>
-    )
+    );
 }

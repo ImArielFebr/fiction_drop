@@ -75,7 +75,7 @@ class BukuController extends Controller
             'stock'=> intval($request->stock),
         ]);
 
-        return redirect('/');
+        return redirect('/bukus');
     }
 
     /**
@@ -107,6 +107,8 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
+        $buku->delete();
+
+        return redirect('/bukus');
     }
 }

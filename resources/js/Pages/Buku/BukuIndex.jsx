@@ -17,7 +17,7 @@ import {
     Tooltip,
 } from "@material-tailwind/react";
 import { NumericFormat } from "react-number-format";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 
 const TABS = [
     {
@@ -34,17 +34,38 @@ const TABS = [
     },
 ];
 
-const TABLE_HEAD = ["Judul", "Harga", "ISBN", "Tanggal Terbit", "Genre", "Bahasa", "Action"];
-
+const TABLE_HEAD = [
+    "Judul",
+    "Harga",
+    "ISBN",
+    "Tanggal Terbit",
+    "Genre",
+    "Bahasa",
+    "Action",
+];
 
 export default function BukuIndex({ bukus }) {
-    console.log(bukus);
+    const { delete: destroy } = useForm();
+
+    function hapus(e, buku) {
+        e.preventDefault();
+        destroy(`/bukus/${buku}`);
+    }
+
     return (
-        <Card floated={true} shadow={true} className="self-center py-10 px-2 rounded-md bg-purple-200">
-            <CardHeader floated={false} shadow={false} className="bg-transparent rounded-none mx-5">
+        <Card
+            floated={true}
+            shadow={true}
+            className="container self-center rounded-md bg-transparent px-2 py-10"
+        >
+            <CardHeader
+                floated={false}
+                shadow={false}
+                className="mx-5 rounded-none bg-transparent"
+            >
                 <div className="mb-8 flex items-center justify-between gap-8">
                     <div>
-                        <Typography variant="h5" color="blue-gray">
+                        <Typography variant="h5" color="black">
                             Daftar Buku
                         </Typography>
                         <Typography color="gray" className="mt-1 font-normal">
@@ -52,12 +73,22 @@ export default function BukuIndex({ bukus }) {
                         </Typography>
                     </div>
                     <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-                        <Button variant="outlined" size="sm" className="font-sans">
+                        <Button
+                            variant="outlined"
+                            size="sm"
+                            className="border-gray-800 font-sans"
+                        >
                             View All
                         </Button>
                         <Link href="/bukus/create">
-                            <Button className="flex items-center gap-2 h-10 w-auto" size="sm">
-                                <UserPlusIcon strokeWidth={2} className="h-4 w-4" />
+                            <Button
+                                className="flex h-10 w-auto items-center gap-2"
+                                size="sm"
+                            >
+                                <UserPlusIcon
+                                    strokeWidth={2}
+                                    className="h-4 w-4"
+                                />
                                 Tambah Buku
                             </Button>
                         </Link>
@@ -71,12 +102,12 @@ export default function BukuIndex({ bukus }) {
                             {TABLE_HEAD.map((head) => (
                                 <th
                                     key={head}
-                                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                                    className="bg-blue-gray-50/50 border-y border-gray-800 p-4"
                                 >
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal leading-none opacity-70"
+                                        color="black"
+                                        className="font-normal leading-none"
                                     >
                                         {head}
                                     </Typography>
@@ -85,22 +116,29 @@ export default function BukuIndex({ bukus }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {bukus.data.map(buku => (
+                        {bukus.data.map((buku) => (
                             <tr key={buku.id}>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <div className="flex items-center gap-3">
-                                        <Avatar src={window.location.origin + `/upload/${buku.sampul}`} alt={buku.judul} className="size-10" />
+                                        <Avatar
+                                            src={
+                                                window.location.origin +
+                                                `/upload/${buku.sampul}`
+                                            }
+                                            alt={buku.judul}
+                                            className="size-10"
+                                        />
                                         <div className="flex flex-col">
                                             <Typography
                                                 variant="small"
-                                                color="blue-gray"
-                                                className="font-medium"
+                                                color="black"
+                                                className="font-bold"
                                             >
                                                 {buku.judul}
                                             </Typography>
                                             <Typography
                                                 variant="small"
-                                                color="blue-gray"
+                                                color="black"
                                                 className="font-normal opacity-70"
                                             >
                                                 {buku.penulis}
@@ -108,76 +146,109 @@ export default function BukuIndex({ bukus }) {
                                         </div>
                                     </div>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal"
+                                        color="black"
+                                        className="font-bold opacity-75"
                                     >
-                                        <NumericFormat value={buku.harga.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'Rp.'} />
+                                        <NumericFormat
+                                            value={buku.harga.toFixed(2)}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"Rp."}
+                                        />
                                     </Typography>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <div className="flex flex-col">
                                         <Typography
                                             variant="small"
-                                            color="blue-gray"
-                                            className="font-normal"
+                                            color="black"
+                                            className="font-bold"
                                         >
                                             {buku.isbn}
                                         </Typography>
                                         <Typography
                                             variant="small"
-                                            color="blue-gray"
+                                            color="black"
                                             className="font-normal opacity-70"
                                         >
                                             {buku.penerbit}
                                         </Typography>
                                     </div>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal"
+                                        color="black"
+                                        className="font-bold opacity-75"
                                     >
-                                        {new Date(buku.tanggal_terbit).toLocaleDateString()}
+                                        {new Date(
+                                            buku.tanggal_terbit,
+                                        ).toLocaleDateString()}
                                     </Typography>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal"
+                                        color="black"
+                                        className="font-bold"
                                     >
                                         {buku.genre}
                                     </Typography>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
+                                <td className="border-b border-gray-800 p-4">
                                     <Typography
                                         variant="small"
-                                        color="blue-gray"
-                                        className="font-normal"
+                                        color="black"
+                                        className="font-bold"
                                     >
                                         {buku.bahasa}
                                     </Typography>
                                 </td>
-                                <td className="p-4 border-b border-blue-gray-50">
-                                    <Tooltip content="Edit User">
-                                        <Link href={`/bukus/${buku.id}`} type='button' className="link text-sm font-semibold leading-6 text-gray-900"
+                                <td className="grid grid-rows-2 gap-y-2 border-b border-gray-800 p-4">
+                                    <Tooltip
+                                        className="bg-slate-800 text-white"
+                                        content="Edit Detail Buku"
+                                    >
+                                        <Link
+                                            href={`/bukus/${buku.id}`}
+                                            type="button"
+                                            className="link"
                                         >
-                                            Details {buku.id}
+                                            <button
+                                                type="button"
+                                                className="rounded-md bg-fuchsia-600 px-4 py-2 text-sm text-white"
+                                            >
+                                                Lihat Detail
+                                            </button>
                                         </Link>
+                                    </Tooltip>
+                                    <Tooltip
+                                        className="bg-slate-800 text-white"
+                                        content="Hapus Buku"
+                                    >
+                                        <form
+                                            onSubmit={(e) => {
+                                                hapus(e, buku.id);
+                                            }}
+                                        >
+                                            <button
+                                                type="submit"
+                                                className="rounded-md bg-red-600 px-4 py-2 text-sm text-white"
+                                            >
+                                                Hapus
+                                            </button>
+                                        </form>
                                     </Tooltip>
                                 </td>
                             </tr>
-                        )
-                        )
-                        }
+                        ))}
                     </tbody>
                 </table>
             </CardBody>
-            <CardFooter className="col-span-full text-center justify-between border-t border-blue-gray-50 p-4">
+            <CardFooter className="border-blue-gray-50 col-span-full justify-between border-t p-4 text-center">
                 <div className="flex gap-2">
                     {bukus.links.map((link) =>
                         link.url ? (
@@ -185,15 +256,19 @@ export default function BukuIndex({ bukus }) {
                                 key={link.label}
                                 href={link.url}
                                 dangerouslySetInnerHTML={{ __html: link.label }}
-                                className={link.active ? "text-black font-bold p-1 mx-1" : "p-1 mx-1"} />
+                                className={
+                                    link.active
+                                        ? "mx-1 p-1 font-bold text-black"
+                                        : "mx-1 p-1"
+                                }
+                            />
                         ) : (
                             <span
                                 key={link.label}
                                 dangerouslySetInnerHTML={{ __html: link.label }}
-                                className="p-1 mx-1 text-gray-400"
-                            >
-                            </span>
-                        )
+                                className="mx-1 p-1 text-gray-400"
+                            ></span>
+                        ),
                     )}
                 </div>
             </CardFooter>

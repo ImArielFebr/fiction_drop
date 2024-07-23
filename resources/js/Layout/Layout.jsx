@@ -1,42 +1,62 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+} from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-    { name: 'Dashboard', href: '/', current: true },
-    { name: 'User', href: '/users', current: false },
-    { name: 'Buku', href: '/bukus', current: false },
-    { name: 'unnamed', href: '#', current: false },
-]
+    { name: "Dashboard", href: "/", current: true },
+    { name: "User", href: "/users", current: false },
+    { name: "Buku", href: "/bukus", current: false },
+    { name: "unnamed", href: "#", current: false },
+];
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
 }
 
 export default function Layout({ children }) {
     return (
         <>
             <header>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>
-                    Fiction Drop
-                </title>
-                <Disclosure as="nav" className="bg-gray-800">
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <title>Fiction Drop</title>
+                <Disclosure as="nav" className="bg-purple-950">
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                 {/* Mobile menu button*/}
                                 <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                     <span className="absolute -inset-0.5" />
-                                    <span className="sr-only">Open main menu</span>
-                                    <Bars3Icon aria-hidden="true" className="block h-6 w-6 group-data-[open]:hidden" />
-                                    <XMarkIcon aria-hidden="true" className="hidden h-6 w-6 group-data-[open]:block" />
+                                    <span className="sr-only">
+                                        Open main menu
+                                    </span>
+                                    <Bars3Icon
+                                        aria-hidden="true"
+                                        className="block h-6 w-6 group-data-[open]:hidden"
+                                    />
+                                    <XMarkIcon
+                                        aria-hidden="true"
+                                        className="hidden h-6 w-6 group-data-[open]:block"
+                                    />
                                 </DisclosureButton>
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex flex-shrink-0 items-center">
-                                    <a href="/"
-                                        className="font-bold h-8 w-auto"
-                                    >{import.meta.env.APP_NAME}</a>
+                                    <a
+                                        href="/"
+                                        className="h-8 w-auto font-bold text-white"
+                                    >
+                                        Fiction Drop
+                                    </a>
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
@@ -44,10 +64,16 @@ export default function Layout({ children }) {
                                             <a
                                                 key={item.name}
                                                 href={item.href}
-                                                aria-current={item.current ? 'page' : undefined}
+                                                aria-current={
+                                                    item.current
+                                                        ? "page"
+                                                        : undefined
+                                                }
                                                 className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium',
+                                                    item.current
+                                                        ? "bg-gray-900 text-white"
+                                                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                                    "rounded-md px-3 py-2 text-sm font-medium",
                                                 )}
                                             >
                                                 {item.name}
@@ -62,8 +88,13 @@ export default function Layout({ children }) {
                                     className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 >
                                     <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">View notifications</span>
-                                    <BellIcon aria-hidden="true" className="h-6 w-6" />
+                                    <span className="sr-only">
+                                        View notifications
+                                    </span>
+                                    <BellIcon
+                                        aria-hidden="true"
+                                        className="h-6 w-6"
+                                    />
                                 </button>
 
                                 {/* Profile dropdown */}
@@ -71,7 +102,9 @@ export default function Layout({ children }) {
                                     <div>
                                         <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                             <span className="absolute -inset-1.5" />
-                                            <span className="sr-only">Open user menu</span>
+                                            <span className="sr-only">
+                                                Open user menu
+                                            </span>
                                             <img
                                                 alt=""
                                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -84,17 +117,26 @@ export default function Layout({ children }) {
                                         className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                                     >
                                         <MenuItem>
-                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                            <a
+                                                href="#"
+                                                className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                                            >
                                                 Your Profile
                                             </a>
                                         </MenuItem>
                                         <MenuItem>
-                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                            <a
+                                                href="#"
+                                                className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                                            >
                                                 Settings
                                             </a>
                                         </MenuItem>
                                         <MenuItem>
-                                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                                            <a
+                                                href="#"
+                                                className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                                            >
                                                 Sign out
                                             </a>
                                         </MenuItem>
@@ -111,10 +153,14 @@ export default function Layout({ children }) {
                                     key={item.name}
                                     as="a"
                                     href={item.href}
-                                    aria-current={item.current ? 'page' : undefined}
+                                    aria-current={
+                                        item.current ? "page" : undefined
+                                    }
                                     className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                        item.current
+                                            ? "bg-gray-900 text-white"
+                                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                        "block rounded-md px-3 py-2 text-base font-medium",
                                     )}
                                 >
                                     {item.name}
@@ -124,10 +170,9 @@ export default function Layout({ children }) {
                     </DisclosurePanel>
                 </Disclosure>
             </header>
-            <body className='container'>
-                {children}
+            <body>
+                <div className="h-auto bg-purple-300">{children}</div>
             </body>
         </>
-
-    )
+    );
 }
