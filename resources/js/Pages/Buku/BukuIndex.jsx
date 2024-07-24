@@ -53,11 +53,7 @@ export default function BukuIndex({ bukus }) {
     }
 
     return (
-        <Card
-            floated={true}
-            shadow={true}
-            className="container self-center rounded-md bg-transparent px-2 py-10"
-        >
+        <Card className="bg-transparent" shadow={false}>
             <CardHeader
                 floated={false}
                 shadow={false}
@@ -213,7 +209,7 @@ export default function BukuIndex({ bukus }) {
                                         content="Edit Detail Buku"
                                     >
                                         <Link
-                                            href={`/bukus/${buku.id}`}
+                                            href={`/bukus/${buku.id}/edit`}
                                             type="button"
                                             className="link"
                                         >
