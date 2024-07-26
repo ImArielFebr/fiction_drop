@@ -9,3 +9,5 @@ Route::get('/', function () {
 });
 
 Route::resource('bukus', BukuController::class);
+
+Route::post('/bukus/images/{buku}', [BukuController::class, 'upload']);
