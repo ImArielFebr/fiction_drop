@@ -98,7 +98,7 @@ export default function BukuIndex({ bukus }) {
                             {TABLE_HEAD.map((head) => (
                                 <th
                                     key={head}
-                                    className="bg-blue-gray-50/50 border-y border-gray-800 p-4"
+                                    className="border-y border-gray-800 p-4"
                                 >
                                     <Typography
                                         variant="small"
@@ -205,7 +205,7 @@ export default function BukuIndex({ bukus }) {
                                 </td>
                                 <td className="grid grid-rows-2 gap-y-2 border-b border-gray-800 p-4">
                                     <Tooltip
-                                        className="bg-slate-800 text-white"
+                                        className="bg-blue-gray-600 text-white"
                                         content="Edit Detail Buku"
                                     >
                                         <Link
@@ -213,16 +213,16 @@ export default function BukuIndex({ bukus }) {
                                             type="button"
                                             className="link"
                                         >
-                                            <button
+                                            <Button
                                                 type="button"
-                                                className="rounded-md bg-fuchsia-600 px-4 py-2 text-sm text-white"
+                                                className="bg-brown-400 rounded-md px-4 py-2 text-sm text-white"
                                             >
                                                 Lihat Detail
-                                            </button>
+                                            </Button>
                                         </Link>
                                     </Tooltip>
                                     <Tooltip
-                                        className="bg-slate-800 text-white"
+                                        className="bg-gray-600 text-white"
                                         content="Hapus Buku"
                                     >
                                         <form
@@ -230,12 +230,12 @@ export default function BukuIndex({ bukus }) {
                                                 hapus(e, buku.id);
                                             }}
                                         >
-                                            <button
+                                            <Button
                                                 type="submit"
                                                 className="rounded-md bg-red-600 px-4 py-2 text-sm text-white"
                                             >
                                                 Hapus
-                                            </button>
+                                            </Button>
                                         </form>
                                     </Tooltip>
                                 </td>

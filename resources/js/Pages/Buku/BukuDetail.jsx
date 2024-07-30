@@ -1,6 +1,6 @@
 import { Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
-import { Card } from "@material-tailwind/react";
+import { Button, Card } from "@material-tailwind/react";
 import {
     Dialog,
     DialogBackdrop,
@@ -305,12 +305,12 @@ export default function BukuDetail({ buku }) {
                         </dl>
                     </div>
                     <div className="col-span-2 mb-10 flex items-center justify-end">
-                        <button
+                        <Button
                             type="submit"
-                            className="rounded-lg bg-yellow-700 p-2 text-white shadow-md"
+                            className="bg-brown-500 rounded-lg px-4 py-2 text-white shadow-md"
                         >
                             Simpan
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </div>
