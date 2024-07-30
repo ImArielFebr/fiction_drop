@@ -140,7 +140,5 @@ class BukuController extends Controller
         $request->file('sampul')->move(public_path('upload'), $image_name);
 
         $buku->update(['sampul'=> $image_name]);
-
-        return redirect('bukus');
     }
 }

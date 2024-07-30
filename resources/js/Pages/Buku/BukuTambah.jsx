@@ -2,6 +2,7 @@ import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
+import { Input } from "@material-tailwind/react";
 
 export default function BukuTambah() {
     const [file, setFile] = useState();
@@ -106,182 +107,106 @@ export default function BukuTambah() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-span-4 grid grid-cols-4 gap-x-6 gap-y-2">
+                                <div className="col-span-4 grid grid-cols-3 gap-x-4 gap-y-2">
                                     <div>
-                                        <label
-                                            htmlFor="judul"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Judul Buku : {data.judul}
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="judul"
-                                                name="judul"
-                                                type="text"
-                                                autoComplete="judul"
-                                                value={data.judul}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "judul",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.judul && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.judul}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Judul Buku"
+                                            autoComplete="judul"
+                                            value={data.judul}
+                                            onChange={(e) =>
+                                                setData("judul", e.target.value)
+                                            }
+                                        />
+                                        {errors.judul && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.judul}
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="penulis"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Penulis : {data.penulis}
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="penulis"
-                                                name="penulis"
-                                                type="text"
-                                                autoComplete="penulis"
-                                                value={data.penulis}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "penulis",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.penulis && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.penulis}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Penulis"
+                                            autoComplete="penulis"
+                                            value={data.penulis}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "penulis",
+                                                    e.target.value,
+                                                )
+                                            }
+                                        />
+                                        {errors.penulis && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.penulis}
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="harga"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Harga Buku :{" "}
-                                            <NumericFormat
-                                                value={data.harga}
-                                                displayType={"text"}
-                                                thousandSeparator={true}
-                                                prefix={"Rp."}
-                                            />
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="harga"
-                                                name="harga"
-                                                type="text"
-                                                autoComplete="harga"
-                                                value={data.harga}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "harga",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.harga && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.harga}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Harga Buku"
+                                            autoComplete="harga"
+                                            value={data.harga}
+                                            onChange={(e) =>
+                                                setData("harga", e.target.value)
+                                            }
+                                        />
+                                        {errors.harga && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.harga}
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="isbn"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Nomor ISBN : {data.isbn}
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="isbn"
-                                                name="isbn"
-                                                type="text"
-                                                autoComplete="isbn"
-                                                value={data.isbn}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "isbn",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.isbn && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.isbn}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Nomor ISBN"
+                                            autoComplete="isbn"
+                                            value={data.isbn}
+                                            onChange={(e) =>
+                                                setData("isbn", e.target.value)
+                                            }
+                                        />
+                                        {errors.isbn && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.isbn}
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="penerbit"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Penerbit : {data.penerbit}
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="penerbit"
-                                                name="penerbit"
-                                                type="text"
-                                                autoComplete="penerbit"
-                                                value={data.penerbit}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "penerbit",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.isbn && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.isbn}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Nama Penerbit"
+                                            autoComplete="penerbit"
+                                            value={data.penerbit}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "penerbit",
+                                                    e.target.value,
+                                                )
+                                            }
+                                        />
+                                        {errors.isbn && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.isbn}
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="jumlah_halaman"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Jumlah Halaman :{" "}
-                                            {data.jumlah_halaman} Halaman
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="jumlah_halaman"
-                                                name="jumlah_halaman"
-                                                type="text"
-                                                autoComplete="jumlah_halaman"
-                                                value={data.jumlah_halaman}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "jumlah_halaman",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Jumlah Halaman"
+                                            autoComplete="jumlah_halaman"
+                                            value={data.jumlah_halaman}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "jumlah_halaman",
+                                                    e.target.value,
+                                                )
+                                            }
+                                        />
                                     </div>
                                     <div>
                                         <label
@@ -394,107 +319,58 @@ export default function BukuTambah() {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="col-span-1">
-                                        <label
-                                            htmlFor="panjang"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Panjang Buku : {data.panjang} cm
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="panjang"
-                                                name="panjang"
-                                                type="text"
-                                                autoComplete="panjang"
-                                                value={data.panjang}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "panjang",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col-span-1">
-                                        <label
-                                            htmlFor="lebar"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Lebar Buku : {data.lebar} cm
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="lebar"
-                                                name="lebar"
-                                                type="text"
-                                                autoComplete="lebar"
-                                                value={data.lebar}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "lebar",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col-span-1">
-                                        <label
-                                            htmlFor="berat"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Berat Buku : {data.berat} gram
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="berat"
-                                                name="berat"
-                                                type="text"
-                                                autoComplete="berat"
-                                                value={data.berat}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "berat",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
+                                    <div>
+                                        <Input
+                                            color="brown"
+                                            label="Panjang Buku"
+                                            autoComplete="panjang"
+                                            value={data.panjang}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "panjang",
+                                                    e.target.value,
+                                                )
+                                            }
+                                        />
                                     </div>
                                     <div>
-                                        <label
-                                            htmlFor="stock"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Stok : {data.stock} eksemplar
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="stock"
-                                                name="stock"
-                                                type="text"
-                                                autoComplete="stock"
-                                                placeholder="10"
-                                                value={data.stock}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "stock",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.stock && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.stock}
-                                                </p>
-                                            )}
-                                        </div>
+                                        <Input
+                                            color="brown"
+                                            label="Lebar Buku"
+                                            autoComplete="lebar"
+                                            value={data.lebar}
+                                            onChange={(e) =>
+                                                setData("lebar", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <div>
+                                        <Input
+                                            color="brown"
+                                            label="Berat Buku"
+                                            autoComplete="berat"
+                                            value={data.berat}
+                                            onChange={(e) =>
+                                                setData("berat", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <div>
+                                        <Input
+                                            color="brown"
+                                            label="Jumlah Stok"
+                                            autoComplete="stock"
+                                            placeholder="10"
+                                            value={data.stock}
+                                            onChange={(e) =>
+                                                setData("stock", e.target.value)
+                                            }
+                                        />
+                                        {errors.stock && (
+                                            <p className="text-xs text-red-700">
+                                                {errors.stock}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </div>

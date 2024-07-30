@@ -24,7 +24,7 @@ function classNames(...classes) {
 export default function Layout({ children }) {
     return (
         <>
-            <div className="bg-yellow-100">
+            <div className="bg-brown-100">
                 <Head>
                     <meta
                         name="viewport"
@@ -33,7 +33,7 @@ export default function Layout({ children }) {
                     <title>Fiction Drop</title>
                 </Head>
                 <div className="shadow-md shadow-neutral-600">
-                    <Disclosure as="nav" className="h-20 bg-yellow-700 pt-2">
+                    <Disclosure as="nav" className="bg-brown-500 h-20 pt-2">
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                             <div className="relative flex h-16 items-center justify-between">
                                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

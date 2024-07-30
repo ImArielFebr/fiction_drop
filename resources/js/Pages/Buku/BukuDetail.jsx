@@ -1,13 +1,5 @@
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
-// import {
-//     Button,
-//     Dialog,
-//     DialogHeader,
-//     DialogBody,
-//     DialogFooter,
-//     Card,
-// } from "@material-tailwind/react";
 import { Card } from "@material-tailwind/react";
 import {
     Dialog,
@@ -15,12 +7,20 @@ import {
     DialogPanel,
     DialogTitle,
 } from "@headlessui/react";
-import { router } from "@inertiajs/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftCircleIcon, TrashIcon } from "@heroicons/react/16/solid";
 
 export default function BukuDetail({ buku }) {
     const [file, setFile] = useState();
-    const { data, setData, put, post, errors, processing, progress } = useForm({
+    const {
+        data,
+        setData,
+        put,
+        post,
+        delete: destroy,
+        errors,
+        processing,
+        progress,
+    } = useForm({
         judul: buku.judul,
         penulis: buku.penulis,
         harga: buku.harga,
@@ -51,6 +51,10 @@ export default function BukuDetail({ buku }) {
         });
     }
 
+    function hapus(e) {
+        e.preventDefault();
+        destroy(`/bukus/${buku.id}`);
+    }
     function submit(e) {
         e.preventDefault();
         put(`/bukus/${buku.id}`);
@@ -63,6 +67,23 @@ export default function BukuDetail({ buku }) {
     return (
         <>
             <div className="bg-transparent">
+                <div className="col-span-full grid grid-cols-2">
+                    <div className="h-10 justify-start">
+                        <Link href="/bukus">
+                            <ArrowLeftCircleIcon className="max-h-full opacity-80 hover:opacity-40" />
+                        </Link>
+                    </div>
+                    <div className="flex h-12 justify-end">
+                        <form onSubmit={hapus}>
+                            <button
+                                type="submit"
+                                className="h-12 justify-end rounded-lg p-2 text-red-700 hover:opacity-40"
+                            >
+                                <TrashIcon title="hapus" className="h-9" />
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 <form onSubmit={submit}>
                     <div>
                         <input
@@ -370,6 +391,7 @@ export default function BukuDetail({ buku }) {
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                     <button
                                         type="submit"
+                                        onClick={() => setOpen(false)}
                                         className="inline-flex w-full justify-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                                     >
                                         Simpan
