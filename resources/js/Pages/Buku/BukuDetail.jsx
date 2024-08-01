@@ -7,9 +7,10 @@ import {
     DialogPanel,
     DialogTitle,
 } from "@headlessui/react";
+import AdminLayout from "../../Layout/AdminLayout";
 import { ArrowLeftCircleIcon, TrashIcon } from "@heroicons/react/16/solid";
 
-export default function BukuDetail({ buku }) {
+function BukuDetail({ buku }) {
     const [file, setFile] = useState();
     const {
         data,
@@ -430,3 +431,7 @@ export default function BukuDetail({ buku }) {
         </>
     );
 }
+
+BukuDetail.layout = (page) => <AdminLayout children={page} />;
+
+export default BukuDetail;

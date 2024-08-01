@@ -1,10 +1,11 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import AdminLayout from "../../Layout/AdminLayout";
 import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { Input } from "@material-tailwind/react";
 
-export default function BukuTambah() {
+function BukuTambah() {
     const [file, setFile] = useState();
     const { data, setData, post, errors, processing, progress } = useForm({
         judul: "",
@@ -471,3 +472,7 @@ export default function BukuTambah() {
         </>
     );
 }
+
+BukuTambah.layout = (page) => <AdminLayout children={page} />;
+
+export default BukuTambah;

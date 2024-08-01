@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import AdminLayout from "../../Layout/AdminLayout";
 import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import {
     Card,
@@ -44,7 +45,7 @@ const TABLE_HEAD = [
     "Action",
 ];
 
-export default function BukuIndex({ bukus }) {
+function BukuIndex({ bukus }) {
     const { delete: destroy } = useForm();
 
     function hapus(e, buku) {
@@ -53,7 +54,7 @@ export default function BukuIndex({ bukus }) {
     }
 
     return (
-        <Card className="bg-transparent" shadow={false}>
+        <Card className="w-full bg-transparent" shadow={false}>
             <CardHeader
                 floated={false}
                 shadow={false}
@@ -215,7 +216,7 @@ export default function BukuIndex({ bukus }) {
                                         >
                                             <Button
                                                 type="button"
-                                                className="bg-brown-400 rounded-md px-4 py-2 text-sm text-white"
+                                                className="rounded-md bg-brown-400 px-4 py-2 text-sm text-white"
                                             >
                                                 Lihat Detail
                                             </Button>
@@ -244,7 +245,7 @@ export default function BukuIndex({ bukus }) {
                     </tbody>
                 </table>
             </CardBody>
-            <CardFooter className="border-blue-gray-50 col-span-full justify-between border-t p-4 text-center">
+            <CardFooter className="col-span-full justify-between border-t border-blue-gray-50 p-4 text-center">
                 <div className="flex gap-2">
                     {bukus.links.map((link) =>
                         link.url ? (
@@ -271,3 +272,7 @@ export default function BukuIndex({ bukus }) {
         </Card>
     );
 }
+
+BukuIndex.layout = (page) => <AdminLayout children={page} />;
+
+export default BukuIndex;
