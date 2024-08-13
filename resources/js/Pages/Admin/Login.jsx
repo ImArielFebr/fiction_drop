@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Typography, Input, Button } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import { Link } from "@inertiajs/react";
+import { Container } from "@mui/material";
 
 function LoginAdmin() {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -101,7 +102,10 @@ function LoginAdmin() {
                         className="!mt-4 text-center font-normal"
                     >
                         Not registered?{" "}
-                        <Link href="" className="font-medium text-gray-900">
+                        <Link
+                            href={"/admin/register"}
+                            className="font-medium text-gray-900"
+                        >
                             Create account
                         </Link>
                     </Typography>
@@ -110,5 +114,7 @@ function LoginAdmin() {
         </section>
     );
 }
+
+LoginAdmin.layout = (page) => <Container children={page} />;
 
 export default LoginAdmin;
