@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\BukuController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\LoginAdminController;
-use App\Http\Controllers\Auth\RegisterAdminController;
+use App\Http\Controllers\Auth\AdminSessionController;
+use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\Admin;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,12 +32,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/registeradmin', [RegisterAdminController::class, 'index']);
-Route::post('/registeradmin', [RegisterAdminController::class, 'store']);
-Route::get('/loginadmin', [LoginAdminController::class, 'index']);
-Route::post('/loginadmin', [LoginAdminController::class, 'store']);
-Route::post('/loginadmin', [LoginAdminController::class, 'destroy'])->middleware('auth');
-Route::resource('admin', AdminController::class);
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminSessionController::class, 'index'])->middleware(Admin::class)->name('admin');
+
+    Route::get('/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
+
+    Route::post('/register', [RegisteredAdminController::class, 'store']);
+
+    Route::get('/login', [AdminSessionController::class, 'create'])->name('admin.login');
+
+    Route::post('/login', [AdminSessionController::class, 'store']);
+
+    Route::post('/logout', [AdminSessionController::class, 'destroy'])
+                ->name('admin.logout');
+});
+
 Route::resource('bukus', BukuController::class);
 
 Route::post('/bukus/images/{buku}', [BukuController::class, 'upload']);
