@@ -7,7 +7,7 @@ import {
     DialogPanel,
     DialogTitle,
 } from "@headlessui/react";
-import AdminLayout from "../../Layout/AdminLayout";
+import AdminLayout from "../../Layouts/AdminLayout";
 import { ArrowLeftCircleIcon, TrashIcon } from "@heroicons/react/16/solid";
 
 function BukuDetail({ buku }) {

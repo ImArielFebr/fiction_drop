@@ -1,13 +1,25 @@
 import { useState } from "react";
 
-import { Typography, Input, Button } from "@material-tailwind/react";
+import { Typography, Input, Button, Checkbox } from "@material-tailwind/react";
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { Container } from "@mui/material";
 
 function LoginAdmin() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => setPasswordShown((cur) => !cur);
+    const { data, setData, post, processing, errors, reset } = useForm({
+        email: "",
+        password: "",
+        remember: false,
+    });
+    console.log();
+    function submit(e) {
+        e.preventDefault();
+        post("/admin/login", {
+            onFinish: () => reset("password"),
+        });
+    }
 
     return (
         <section className="grid h-screen items-center p-8 text-center">
@@ -15,17 +27,20 @@ function LoginAdmin() {
                 <Typography variant="h3" color="blue-gray" className="mb-2">
                     Sign In
                 </Typography>
-                <Typography className="mb-16 text-[18px] font-normal text-gray-600">
-                    Enter your email and password to sign in
+                <Typography className="mb-10 text-[18px] font-normal text-gray-600">
+                    Masukkan email dan password untuk masuk
                 </Typography>
-                <form action="#" className="mx-auto max-w-[24rem] text-left">
+                <form
+                    onSubmit={submit}
+                    className="mx-auto max-w-[24rem] text-left"
+                >
                     <div className="mb-6">
                         <label htmlFor="email">
                             <Typography
                                 variant="small"
                                 className="mb-2 block font-medium text-gray-900"
                             >
-                                Your Email
+                                Email
                             </Typography>
                         </label>
                         <Input
@@ -34,7 +49,9 @@ function LoginAdmin() {
                             size="lg"
                             type="email"
                             name="email"
-                            placeholder="name@mail.com"
+                            value={data.email}
+                            onChange={(e) => setData("email", e.target.value)}
+                            placeholder="email@mail.com"
                             className="focus:border-t-primary w-full border-t-blue-gray-200 placeholder:opacity-100"
                             labelProps={{
                                 className: "hidden",
@@ -51,8 +68,14 @@ function LoginAdmin() {
                             </Typography>
                         </label>
                         <Input
+                            id="password"
+                            name="password"
                             size="lg"
                             placeholder="********"
+                            value={data.password}
+                            onChange={(e) =>
+                                setData("password", e.target.value)
+                            }
                             labelProps={{
                                 className: "hidden",
                             }}
@@ -69,19 +92,41 @@ function LoginAdmin() {
                             }
                         />
                     </div>
-                    <Button color="gray" size="lg" className="mt-6" fullWidth>
+                    <div className="mt-4 block">
+                        <label className="flex items-center">
+                            <Checkbox
+                                name="remember"
+                                checked={data.remember}
+                                onChange={(e) =>
+                                    setData("remember", e.target.checked)
+                                }
+                            />
+                            <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">
+                                Remember me
+                            </span>
+                        </label>
+                    </div>
+
+                    <Button
+                        type="submit"
+                        disabled={processing}
+                        color="gray"
+                        size="lg"
+                        className="mt-6"
+                        fullWidth
+                    >
                         sign in
                     </Button>
                     <div className="!mt-4 flex justify-end">
-                        <Typography
-                            as="a"
-                            href="#"
-                            color="blue-gray"
-                            variant="small"
-                            className="font-medium"
-                        >
-                            Forgot password
-                        </Typography>
+                        <Link href="#">
+                            <Typography
+                                color="blue-gray"
+                                variant="small"
+                                className="font-medium"
+                            >
+                                Forgot password?
+                            </Typography>
+                        </Link>
                     </div>
                     <Button
                         variant="outlined"

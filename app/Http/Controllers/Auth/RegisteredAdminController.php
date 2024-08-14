@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -34,7 +34,11 @@ class RegisteredAdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.Admin::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', Password::min(8)->letters()->numbers()->uncompromised()],
+        ], [
+            'name' => ['Kotak nama wajib diisi'],
+            'email' => ['Kotak email wajib diisi'],
+            'password' => ['Kotak password wajib diisi'],
         ]);
 
         $admin = Admin::create([
@@ -47,6 +51,6 @@ class RegisteredAdminController extends Controller
 
         Auth::login($admin);
 
-        return redirect(inertia('Admin/AdminIndex'));
+        return redirect('/admin');
     }
 }

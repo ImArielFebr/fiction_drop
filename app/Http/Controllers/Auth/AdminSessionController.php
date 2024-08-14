@@ -25,18 +25,21 @@ class AdminSessionController extends Controller
      * Handle an incoming authentication request.
      */
 
-    public function index()
+    public function store(Request $request): RedirectResponse
     {
-        return inertia('Admin/AdminIndex');
-    }
+        // dd($request);
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
 
-        $request->session()->regenerate();
+            return redirect()->intended('admin');
+        }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect('admin.login');
     }
 
     /**
@@ -44,12 +47,12 @@ class AdminSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/admin/login');
     }
 }

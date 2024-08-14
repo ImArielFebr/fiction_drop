@@ -177,7 +177,13 @@ export default function AdminLayout({ children }) {
                                 <ListItemPrefix>
                                     <PowerIcon className="h-5 w-5" />
                                 </ListItemPrefix>
-                                Log Out
+                                <Link
+                                    method="post"
+                                    href={route("admin.logout")}
+                                    as="button"
+                                >
+                                    Log Out
+                                </Link>
                             </ListItem>
                         </List>
                     </Card>

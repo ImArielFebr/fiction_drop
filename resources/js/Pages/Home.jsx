@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/react";
-import Layout from "../Layout/Layout";
+import Layout from "../Layouts/Layout";
 import React from "react";
 import {
     Navbar,

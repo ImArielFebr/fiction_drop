@@ -1,5 +1,5 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import AdminLayout from "../../Layout/AdminLayout";
+import AdminLayout from "../../Layouts/AdminLayout";
 import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";

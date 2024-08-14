@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminSessionController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminSessionController::class, 'index'])->middleware(Admin::class)->name('admin');
+    Route::get('/', [AdminController::class, 'index'])->middleware(Admin::class)->name('admin');
 
     Route::get('/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
 
