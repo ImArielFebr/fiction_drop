@@ -1,20 +1,13 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import AdminLayout from "../../Layouts/AdminLayout";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
+import { UserPlusIcon } from "@heroicons/react/24/solid";
 import {
     Card,
     CardHeader,
-    Input,
     Typography,
     Button,
     CardBody,
-    Chip,
     CardFooter,
-    Tabs,
-    TabsHeader,
-    Tab,
     Avatar,
-    IconButton,
     Tooltip,
 } from "@material-tailwind/react";
 import { NumericFormat } from "react-number-format";

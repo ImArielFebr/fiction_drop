@@ -31,8 +31,8 @@ export default function AdminLayout({ children }) {
     };
 
     return (
-        <div className="flex bg-brown-50">
-            <Card className="col-span-1 h-screen max-w-[20rem] bg-brown-600 p-4 shadow-xl shadow-blue-gray-900/5">
+        <div className="flex h-screen bg-brown-50">
+            <Card className="col-span-1 h-auto max-w-[20rem] basis-1/5 rounded-none bg-brown-500 p-4 pt-10 shadow-xl shadow-brown-600">
                 <div className="mb-2 p-4">
                     <Link href="/">
                         <Typography variant="h5" color="white">
@@ -72,33 +72,49 @@ export default function AdminLayout({ children }) {
                         </ListItem>
                         <AccordionBody className="py-1">
                             <List className="p-0">
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <ChevronRightIcon
-                                            strokeWidth={3}
-                                            className="h-3 w-5"
-                                        />
-                                    </ListItemPrefix>
-                                    Analytics
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <ChevronRightIcon
-                                            strokeWidth={3}
-                                            className="h-3 w-5"
-                                        />
-                                    </ListItemPrefix>
-                                    Reporting
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <ChevronRightIcon
-                                            strokeWidth={3}
-                                            className="h-3 w-5"
-                                        />
-                                    </ListItemPrefix>
-                                    Projects
-                                </ListItem>
+                                <Link href="/admin">
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <ChevronRightIcon
+                                                color="white"
+                                                strokeWidth={3}
+                                                className="h-3 w-5"
+                                            />
+                                        </ListItemPrefix>
+                                        <Typography color="white">
+                                            Home
+                                        </Typography>
+                                    </ListItem>
+                                </Link>
+                                <Link href="#">
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <ChevronRightIcon
+                                                color="white"
+                                                strokeWidth={3}
+                                                className="h-3 w-5"
+                                            />
+                                        </ListItemPrefix>
+                                        <Typography color="white">
+                                            Analytics
+                                        </Typography>
+                                    </ListItem>
+                                </Link>
+                                <Link href="#">
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <ChevronRightIcon
+                                                color="white"
+                                                strokeWidth={3}
+                                                className="h-3 w-5"
+                                            />
+                                        </ListItemPrefix>
+
+                                        <Typography color="white">
+                                            Projects
+                                        </Typography>
+                                    </ListItem>
+                                </Link>
                             </List>
                         </AccordionBody>
                     </Accordion>
@@ -106,6 +122,7 @@ export default function AdminLayout({ children }) {
                         open={open === 2}
                         icon={
                             <ChevronDownIcon
+                                color="white"
                                 strokeWidth={2.5}
                                 className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
                             />
@@ -117,77 +134,110 @@ export default function AdminLayout({ children }) {
                                 className="border-b-0 p-3"
                             >
                                 <ListItemPrefix>
-                                    <ShoppingBagIcon className="h-5 w-5" />
+                                    <ShoppingBagIcon
+                                        color="white"
+                                        className="h-5 w-5"
+                                    />
                                 </ListItemPrefix>
                                 <Typography
-                                    color="blue-gray"
+                                    color="white"
                                     className="mr-auto font-normal"
                                 >
-                                    E-Commerce
+                                    Buku
                                 </Typography>
                             </AccordionHeader>
                         </ListItem>
                         <AccordionBody className="py-1">
                             <List className="p-0">
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <ChevronRightIcon
-                                            strokeWidth={3}
-                                            className="h-3 w-5"
-                                        />
-                                    </ListItemPrefix>
-                                    Orders
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <ChevronRightIcon
-                                            strokeWidth={3}
-                                            className="h-3 w-5"
-                                        />
-                                    </ListItemPrefix>
-                                    Products
-                                </ListItem>
+                                <Link href="/bukus">
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <ChevronRightIcon
+                                                color="white"
+                                                strokeWidth={3}
+                                                className="h-3 w-5"
+                                            />
+                                        </ListItemPrefix>
+                                        <Typography color="white">
+                                            Daftar Buku
+                                        </Typography>
+                                    </ListItem>
+                                </Link>
+                                <Link href="#">
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <ChevronRightIcon
+                                                color="white"
+                                                strokeWidth={3}
+                                                className="h-3 w-5"
+                                            />
+                                        </ListItemPrefix>
+                                        <Typography color="white">
+                                            Transaksi
+                                        </Typography>
+                                    </ListItem>
+                                </Link>
                             </List>
                         </AccordionBody>
                     </Accordion>
                     <hr className="my-2 border-blue-gray-50" />
-                    <ListItem>
-                        <ListItemPrefix>
-                            <InboxIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Inbox
-                        <ListItemSuffix>
-                            <Chip
-                                value="14"
-                                size="sm"
-                                variant="ghost"
-                                color="blue-gray"
-                                className="rounded-full"
-                            />
-                        </ListItemSuffix>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <UserCircleIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Profile
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <Cog6ToothIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Settings
-                    </ListItem>
-                    <ListItem>
-                        <ListItemPrefix>
-                            <PowerIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Log Out
-                    </ListItem>
+                    <Link href="#">
+                        <ListItem>
+                            <ListItemPrefix>
+                                <InboxIcon color="white" className="h-5 w-5" />
+                            </ListItemPrefix>
+                            <Typography color="white">Inbox</Typography>
+                            <ListItemSuffix>
+                                <Chip
+                                    value="14"
+                                    size="sm"
+                                    variant="ghost"
+                                    color="blue-gray"
+                                    className="rounded-full"
+                                />
+                            </ListItemSuffix>
+                        </ListItem>
+                    </Link>
+                    <Link href="#">
+                        <ListItem>
+                            <ListItemPrefix>
+                                <UserCircleIcon
+                                    color="white"
+                                    className="h-5 w-5"
+                                />
+                            </ListItemPrefix>
+                            <Typography color="white">Profile</Typography>
+                        </ListItem>
+                    </Link>
+                    <Link href="#">
+                        <ListItem>
+                            <ListItemPrefix>
+                                <Cog6ToothIcon
+                                    color="white"
+                                    className="h-5 w-5"
+                                />
+                            </ListItemPrefix>
+                            <Typography color="white">Pengaturan</Typography>
+                        </ListItem>
+                    </Link>
+                    <Link
+                        method="post"
+                        href={route("admin.logout")}
+                        as="button"
+                    >
+                        <ListItem>
+                            <ListItemPrefix>
+                                <PowerIcon color="white" className="h-5 w-5" />
+                            </ListItemPrefix>
+                            <Typography color="white">Log Out</Typography>
+                        </ListItem>
+                    </Link>
                 </List>
             </Card>
 
-            <Container className="justify-start">{children}</Container>
+            <Container className="basis-4/5 justify-start bg-transparent">
+                <div className="bg-transparent pt-10">{children}</div>
+            </Container>
         </div>
     );
 }

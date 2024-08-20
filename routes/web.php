@@ -48,9 +48,9 @@ Route::prefix('admin')->group(function () {
                 ->name('admin.logout');
 });
 
-Route::resource('bukus', BukuController::class);
+Route::resource('bukus', BukuController::class)->middleware(Admin::class);
 
-Route::post('/bukus/images/{buku}', [BukuController::class, 'upload']);
+Route::post('/bukus/images/{buku}', [BukuController::class, 'upload'])->middleware(Admin::class);
 
 
 require __DIR__.'/auth.php';
