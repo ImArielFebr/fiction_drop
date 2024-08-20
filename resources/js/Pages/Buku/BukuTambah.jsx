@@ -3,7 +3,7 @@ import AdminLayout from "../../Layouts/AdminLayout";
 import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { NumericFormat } from "react-number-format";
-import { Input } from "@material-tailwind/react";
+import { Input, Card } from "@material-tailwind/react";
 
 function BukuTambah() {
     const [file, setFile] = useState();
@@ -108,115 +108,173 @@ function BukuTambah() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-span-4 grid grid-cols-3 gap-x-4 gap-y-2">
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Judul Buku"
-                                            autoComplete="judul"
-                                            value={data.judul}
-                                            onChange={(e) =>
-                                                setData("judul", e.target.value)
-                                            }
-                                        />
-                                        {errors.judul && (
-                                            <p className="text-xs text-red-700">
-                                                {errors.judul}
-                                            </p>
-                                        )}
+                                <div className="my-8 grid">
+                                    <div className="flex gap-3">
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Judul Buku"
+                                                autoComplete="judul"
+                                                value={data.judul}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "judul",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                            {errors.judul && (
+                                                <p className="text-xs text-red-700">
+                                                    {errors.judul}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Penulis"
+                                                autoComplete="penulis"
+                                                value={data.penulis}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "penulis",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                            {errors.penulis && (
+                                                <p className="text-xs text-red-700">
+                                                    {errors.penulis}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Harga Buku"
+                                                autoComplete="harga"
+                                                value={data.harga}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "harga",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                            {errors.harga && (
+                                                <p className="text-xs text-red-700">
+                                                    {errors.harga}
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Penulis"
-                                            autoComplete="penulis"
-                                            value={data.penulis}
-                                            onChange={(e) =>
-                                                setData(
-                                                    "penulis",
-                                                    e.target.value,
-                                                )
-                                            }
-                                        />
-                                        {errors.penulis && (
-                                            <p className="text-xs text-red-700">
-                                                {errors.penulis}
-                                            </p>
-                                        )}
+                                    <div className="flex gap-3">
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Nomor ISBN"
+                                                autoComplete="isbn"
+                                                value={data.isbn}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "isbn",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                            {errors.isbn && (
+                                                <p className="text-xs text-red-700">
+                                                    {errors.isbn}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Nama Penerbit"
+                                                autoComplete="penerbit"
+                                                value={data.penerbit}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "penerbit",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                            {errors.isbn && (
+                                                <p className="text-xs text-red-700">
+                                                    {errors.isbn}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Jumlah Halaman"
+                                                autoComplete="jumlah_halaman"
+                                                value={data.jumlah_halaman}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "jumlah_halaman",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Harga Buku"
-                                            autoComplete="harga"
-                                            value={data.harga}
-                                            onChange={(e) =>
-                                                setData("harga", e.target.value)
-                                            }
-                                        />
-                                        {errors.harga && (
-                                            <p className="text-xs text-red-700">
-                                                {errors.harga}
-                                            </p>
-                                        )}
+                                    <div className="flex gap-3">
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Panjang Buku"
+                                                autoComplete="panjang"
+                                                value={data.panjang}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "panjang",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Lebar Buku"
+                                                autoComplete="lebar"
+                                                value={data.lebar}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "lebar",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div className="basis-1/3">
+                                            <Input
+                                                color="brown"
+                                                label="Berat Buku"
+                                                autoComplete="berat"
+                                                value={data.berat}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "berat",
+                                                        e.target.value,
+                                                    )
+                                                }
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Nomor ISBN"
-                                            autoComplete="isbn"
-                                            value={data.isbn}
-                                            onChange={(e) =>
-                                                setData("isbn", e.target.value)
-                                            }
-                                        />
-                                        {errors.isbn && (
-                                            <p className="text-xs text-red-700">
-                                                {errors.isbn}
-                                            </p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Nama Penerbit"
-                                            autoComplete="penerbit"
-                                            value={data.penerbit}
-                                            onChange={(e) =>
-                                                setData(
-                                                    "penerbit",
-                                                    e.target.value,
-                                                )
-                                            }
-                                        />
-                                        {errors.isbn && (
-                                            <p className="text-xs text-red-700">
-                                                {errors.isbn}
-                                            </p>
-                                        )}
-                                    </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Jumlah Halaman"
-                                            autoComplete="jumlah_halaman"
-                                            value={data.jumlah_halaman}
-                                            onChange={(e) =>
-                                                setData(
-                                                    "jumlah_halaman",
-                                                    e.target.value,
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            htmlFor="genre"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Genre Utama : {data.genre}
-                                        </label>
-                                        <div className="mt-2">
+
+                                    <div className="flex gap-3">
+                                        <div className="basis-1/3">
+                                            <label
+                                                htmlFor="genre"
+                                                className="block text-sm font-medium leading-6 text-gray-900"
+                                            >
+                                                Genre Utama : {data.genre}
+                                            </label>
                                             <select
                                                 id="genre"
                                                 name="genre"
@@ -246,15 +304,13 @@ function BukuTambah() {
                                                 </p>
                                             )}
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label
-                                            htmlFor="bahasa"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Bahasa : {data.bahasa}
-                                        </label>
-                                        <div className="mt-2">
+                                        <div className="basis-1/3">
+                                            <label
+                                                htmlFor="bahasa"
+                                                className="block text-sm font-medium leading-6 text-gray-900"
+                                            >
+                                                Bahasa : {data.bahasa}
+                                            </label>
                                             <select
                                                 id="bahasa"
                                                 name="bahasa"
@@ -287,76 +343,40 @@ function BukuTambah() {
                                                 </p>
                                             )}
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label
-                                            htmlFor="tanggal_terbit"
-                                            className="block text-sm font-medium leading-6 text-gray-900"
-                                        >
-                                            Tanggal Terbit :{" "}
-                                            {new Date(
-                                                data.tanggal_terbit,
-                                            ).toLocaleDateString()}
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                id="tanggal_terbit"
-                                                name="tanggal_terbit"
-                                                type="date"
-                                                autoComplete="tanggal_terbit"
-                                                value={data.tanggal_terbit}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "tanggal_terbit",
-                                                        e.target.value,
-                                                    )
-                                                }
-                                                className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
-                                            {errors.tanggal_terbit && (
-                                                <p className="text-xs text-red-700">
-                                                    {errors.tanggal_terbit}
-                                                </p>
-                                            )}
+                                        <div className="basis-1/3">
+                                            <label
+                                                htmlFor="tanggal_terbit"
+                                                className="block text-sm font-medium leading-6 text-gray-900"
+                                            >
+                                                Tanggal Terbit :{" "}
+                                                {new Date(
+                                                    data.tanggal_terbit,
+                                                ).toLocaleDateString()}
+                                            </label>
+                                            <div>
+                                                <input
+                                                    id="tanggal_terbit"
+                                                    name="tanggal_terbit"
+                                                    type="date"
+                                                    autoComplete="tanggal_terbit"
+                                                    value={data.tanggal_terbit}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "tanggal_terbit",
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    className="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                />
+                                                {errors.tanggal_terbit && (
+                                                    <p className="text-xs text-red-700">
+                                                        {errors.tanggal_terbit}
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Panjang Buku"
-                                            autoComplete="panjang"
-                                            value={data.panjang}
-                                            onChange={(e) =>
-                                                setData(
-                                                    "panjang",
-                                                    e.target.value,
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Lebar Buku"
-                                            autoComplete="lebar"
-                                            value={data.lebar}
-                                            onChange={(e) =>
-                                                setData("lebar", e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div>
-                                        <Input
-                                            color="brown"
-                                            label="Berat Buku"
-                                            autoComplete="berat"
-                                            value={data.berat}
-                                            onChange={(e) =>
-                                                setData("berat", e.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div>
+                                    <div className="basis-1/4">
                                         <Input
                                             color="brown"
                                             label="Jumlah Stok"

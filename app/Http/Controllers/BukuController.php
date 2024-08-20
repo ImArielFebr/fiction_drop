@@ -30,7 +30,7 @@ class BukuController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+        // dd($request);
         $request->validate([
             'judul' => ['required'],
             'penulis'=> ['required'],

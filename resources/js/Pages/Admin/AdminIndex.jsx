@@ -1,4 +1,4 @@
-import AdminLayout from "../../Layouts/AdminLayoutt";
+import AdminLayout from "../../Layouts/AdminLayout";
 
 function AdminIndex() {
     return (
