@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\Auth\AdminSessionController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,21 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->middleware(Admin::class)->name('admin');
+
+    Route::get('/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
+
+    Route::post('/register', [RegisteredAdminController::class, 'store']);
+
+    Route::get('/login', [AdminSessionController::class, 'create'])->name('admin.login');
+
+    Route::post('/login', [AdminSessionController::class, 'store']);
+
+    Route::post('/logout', [AdminSessionController::class, 'destroy'])
+                ->name('admin.logout');
+});
+
+Route::prefix('penulis')->group(function () {
+    Route::get('/', [PenulisController::class, 'index'])->middleware(Pengguna::class)->name('penulis');
 
     Route::get('/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
 
