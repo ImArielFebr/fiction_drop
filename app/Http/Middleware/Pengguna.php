@@ -15,8 +15,8 @@ class Pengguna
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('admin')->check()){
-            return redirect()->route('admin.login');
+        if(!Auth::guard('penulis')->check()){
+            return redirect()->route('penulis.login');
         }
 
         return $next($request);

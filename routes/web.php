@@ -4,7 +4,9 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\Auth\AdminSessionController;
+use App\Http\Controllers\Auth\PenulisSessionController;
 use App\Http\Controllers\Auth\RegisteredAdminController;
+use App\Http\Controllers\Auth\RegisteredPenulisController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin;
 use Illuminate\Foundation\Application;
@@ -52,16 +54,16 @@ Route::prefix('admin')->group(function () {
 Route::prefix('penulis')->group(function () {
     Route::get('/', [PenulisController::class, 'index'])->middleware(Pengguna::class)->name('penulis');
 
-    Route::get('/register', [RegisteredAdminController::class, 'create'])->name('admin.register');
+    Route::get('/register', [RegisteredPenulisController::class, 'create'])->name('penulis.register');
 
     Route::post('/register', [RegisteredAdminController::class, 'store']);
 
-    Route::get('/login', [AdminSessionController::class, 'create'])->name('admin.login');
+    Route::get('/login', [PenulisSessionController::class, 'create'])->name('penulis.login');
 
-    Route::post('/login', [AdminSessionController::class, 'store']);
+    Route::post('/login', [PenulisSessionController::class, 'store']);
 
-    Route::post('/logout', [AdminSessionController::class, 'destroy'])
-                ->name('admin.logout');
+    Route::post('/logout', [PenulisSessionController::class, 'destroy'])
+                ->name('penulis.logout');
 });
 
 Route::resource('bukus', BukuController::class)->middleware(Admin::class);
